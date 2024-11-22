@@ -596,6 +596,10 @@ if ('name' in Foo) {
 
 ```js
 type Factory<T> = T | number | string
+//如果我们使用伪代码来表示的话上述的泛型相当于
+function Factory(T) {
+  return [T, number, string]
+}
 ```
 
 这个类型别名本质上是一个函数，T 就是它的变量，返回值则是一个包含 T 的联合类型，
@@ -605,4 +609,34 @@ type Factory<T> = T | number | string
 type Stringify<T>= {
   [k in keyof T ]:T[k]
 }
+```
+
+条件类型
+
+```js
+//用来判断传进来的参数是否是string类型 如果是就返回类型true否则返回false
+type IsString<T> = T extends string ? true : false
+```
+
+### 泛型约束和默认值
+
+```js
+//赋默认值
+type Factory<T = boolean> = T | number | string
+//这样在调用的时候就不用再传参数了
+const A: Factory = true
+```
+
+除了声明默认值外，泛型还能做到一样函数参数做不到的事，就是**泛型约束**。也就是说，你可以要求传入这个工具类型的泛型必须符合某些条件，否则你就拒绝执行后面的逻辑
+
+我们使用**extends**关键字来约束传入的泛型参数 A extends B ，A 必须是 B 的子类型
+
+```js
+type ResStatus<ResCode extends number> = ResCode extends 200|201|202?'success':'fail'
+```
+
+### 多泛型关联
+
+```js
+type Factory<Type, Type1, Type2> = [Type, Type1, Type2]
 ```
