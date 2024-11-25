@@ -638,5 +638,34 @@ type ResStatus<ResCode extends number> = ResCode extends 200|201|202?'success':'
 ### 多泛型关联
 
 ```js
-type Factory<Type, Type1, Type2> = [Type, Type1, Type2]
+type Factory<Type, Type1 extends Type = Type, Type2> = [Type, Type1, Type2]
 ```
+
+### 对象中的泛型
+
+```js
+interface Obj<T = unknown> {
+  goods: T[];
+  price: number;
+}
+```
+
+### 函数中的泛型
+
+```js
+function handler<T>(input: T): T {}
+//箭头函数
+const handler = <T>(input: T): T => {}
+```
+
+### class 中的泛型
+
+```js
+class Factory<T> {
+  private data: T;
+}
+```
+
+## 结构化类型系统
+
+typescript 比较的是两个类型时不是比较两个类型的名称，而是比较两个类型实际上所拥有的属性和方法。这就是结构化类型的系统，别称是**鸭子类型**
