@@ -1,3 +1,7 @@
+---
+outline: deep
+---
+
 # Typescript
 
 typscript 是微软公司开发的开源编程语言，是 JavaScript 的超集，typescript 包含 javascript，同时为 javascript 添加了静态类型检查和基于类的面向对象编程特性，这可以帮助大型项目的开发管理和维护。
