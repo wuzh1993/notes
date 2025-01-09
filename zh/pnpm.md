@@ -125,3 +125,27 @@ pnpm install express
 至于为什么每个依赖下都必须存在一个 node_modules 文件夹呢？,官方也对此作出了解释
 
 ![alt text](./pnpm/image-9.png)
+
+## 如何使用 pnpm？
+
+### 安装
+
+```js
+npm install -g pnpm
+```
+
+### 常见命令
+
+```js
+pnpm self-update //更新当前pnpm版本
+pnpm config set store-dir /path/to/.pnpm-store //设置pnpm的存储目录
+pnpm add <pkg> //安装依赖包
+pnpm install //安装所有依赖
+pnpm update //更新依赖
+更新依赖时可以通过特定的模式匹配选择依赖项，如：
+pnpm update "@babel/*" //更新所有的babel包
+pnpm update --latest //更新所有的包到最新版本
+pnpm remove <pkg> //删除依赖
+```
+
+其他命令请查看官网 https://pnpm.io/zh/

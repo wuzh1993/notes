@@ -43,6 +43,7 @@ export default defineConfig({
           { text: 'typescript', link: '/zh/typescript' },
           { text: 'javascript', link: '/zh/javascript' },
           { text: '为何要使用pnpm', link: '/zh/pnpm' },
+          { text: '为何要使用Monorepo', link: '/zh/Monorepo' },
         ],
       },
     ],
