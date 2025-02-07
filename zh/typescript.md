@@ -673,3 +673,4 @@ class Factory<T> {
 ## 结构化类型系统
 
 typescript 比较的是两个类型时不是比较两个类型的名称，而是比较两个类型实际上所拥有的属性和方法。这就是结构化类型的系统，别称是**鸭子类型**
+![alt text](./typescript/image.png)

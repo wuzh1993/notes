@@ -42,6 +42,7 @@ export default defineConfig({
         items: [
           { text: 'typescript', link: '/zh/typescript' },
           { text: 'javascript', link: '/zh/javascript' },
+          { text: 'NestJS', link: '/zh/nestjs' },
           { text: '为何要使用pnpm', link: '/zh/pnpm' },
           { text: '为何要使用Monorepo', link: '/zh/Monorepo' },
         ],
