@@ -105,6 +105,90 @@ IOC(控制反转)是一个容器，它的内部可以存放一些对象，在程
 
 在 nest 中我们通常使用装饰器来声明依赖
 
+## 依赖注入
+
+在 nest 中，如果模块 a 需要使用模块 b 中的 service 方法，则具体步骤是
+
+1.在模块 b 中使用 exports 导出 bService
+
+```js
+import { Module } from '@nestjs/common'
+import { BService } from './b.service'
+
+@Module({
+  providers: [BService],
+  exports: [BService], // 导出BService
+})
+export class BModule {}
+```
+
+2.在模块 a 中使用 imports 导入 bMoudle
+
+```js
+import { Module } from '@nestjs/common'
+import { AService } from './a.service'
+import { BModule } from '../b/b.module' // 假设BModule位于不同的文件夹
+
+@Module({
+  imports: [BModule], // 导入BModule
+  providers: [AService],
+})
+export class AModule {}
+```
+
+3.在模块 a 中注入 bService（可使用构造函数注入或者属性注入）
+
+```js
+import { Injectable, Inject } from '@nestjs/common';
+import { BService } from '../b/b.service'; // 确保路径正确
+
+@Injectable()
+export class AService {
+  //构造函数注入
+  constructor(private readonly bService: BService) {}
+  //属性注入
+  @Inject("BService") private readonly bService: BService;
+  // 示例方法
+  async performTask() {
+    return this.bService.someMethod();
+  }
+}
+```
+
+如果我们需要全局注册的话则使用 @Global 装饰器
+
+```js
+
+import { Module } from '@nestjs/common'
+import { BService } from './b.service'
+
+@Global()
+@Module({
+  providers: [BService],
+  exports: [BService], // 导出BService
+})
+```
+
+那么在需要注入的模块中则无须再使用 imports 来引用了
+不过全局模块还是尽量少用，不然注入的很多 provider 都不知道来源，会降低代码的可维护性。
+
+## 生命周期
+
+Nest 在启动的时候，会递归解析 Module 依赖，扫描其中的 provider、controller，注入它的依赖。
+
+全部解析完后，会监听网络端口，开始处理请求。
+
+![alt text](lifecycle-events.png)
+![alt text](image-4.png)
+
+首先，递归初始化模块，会依次调用模块内的 controller、provider 的 onModuleInit 方法，然后再调用 module 的 onModuleInit 方法。
+
+全部初始化完之后，再依次调用模块内的 controller、provider 的 onApplicationBootstrap 方法，然后调用 module 的 onApplicationBootstrap 方法
+
+然后监听网络端口。
+
+之后 Nest 应用就正常运行了。
+
 ## 控制器
 
 控制器是负责处理传入请求并向客户端返回响应
