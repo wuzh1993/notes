@@ -3,9 +3,9 @@ name: Deploy VitePress to GitHub Pages
 # 触发条件
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:
 
 # 权限设置
