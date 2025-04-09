@@ -6,6 +6,6 @@ title: Home
 
 <script>
   if (typeof window !== 'undefined') {
-    window.location.href = '/zh/javascript';
+    window.location.href = '/note/zh/javascript';
   }
 </script>
