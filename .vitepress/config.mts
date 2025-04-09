@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: '/note/',
   title: '吴自豪的前端博客',
   lang: 'zh-CN',
   description: '吴自豪的前端博客',
