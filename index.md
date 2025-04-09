@@ -5,5 +5,7 @@ title: Home
 # Welcome to My VitePress Site
 
 <script>
-  window.location.href = '/zh/typescript';
+  if (typeof window !== 'undefined') {
+    window.location.href = '/zh/javascript';
+  }
 </script>
