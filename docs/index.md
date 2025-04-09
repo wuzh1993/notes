@@ -2,10 +2,10 @@
 title: Home
 ---
 
-# Welcome to My VitePress Site
+# 欢迎浏览我的博客
 
 <script>
   if (typeof window !== 'undefined') {
-    window.location.href = '/note/zh/javascript';
+    window.location.href = '/docs/zh/javascript';
   }
 </script>

@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: '/note/',
+  base: '/docs/',
   title: '吴自豪的前端博客',
   lang: 'zh-CN',
   description: '吴自豪的前端博客',
@@ -41,11 +41,11 @@ export default defineConfig({
       {
         text: '前端',
         items: [
-          { text: 'javascript', link: '/note/zh/javascript' },
-          { text: 'typescript', link: '/note/zh/typescript' },
-          { text: 'NestJS', link: '/note/zh/nestjs' },
-          { text: '为何要使用pnpm', link: '/note/zh/pnpm' },
-          { text: '为何要使用Monorepo', link: '/note/zh/Monorepo' },
+          { text: 'javascript', link: '/zh/javascript' },
+          { text: 'typescript', link: '/zh/typescript' },
+          { text: 'NestJS', link: '/zh/nestjs' },
+          { text: '为何要使用pnpm', link: '/zh/pnpm' },
+          { text: '为何要使用Monorepo', link: '/zh/Monorepo' },
         ],
       },
     ],
